@@ -22,6 +22,22 @@ module.exports = function(grunt) {
       all: ['Gruntfile.js'],
       beforeconcat: config.jsSrc+'**/*.js',
       afterconcat: config.jsDest+'**/*.js'
+    },
+    watch: {
+      scripts: {
+        files: [config.jsSrc+'**/*.js'],
+        tasks: ['jshint:all', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat'],
+        options: {
+          spawn: false
+        }
+      },
+      sass: {
+        files: [config.sassSrc+'*.scss'],
+        tasks: ['sass'],
+        options: {
+          spawn: false
+        }
+      }
     }
   });
 
@@ -30,7 +46,8 @@ module.exports = function(grunt) {
     'jshint:beforeconcat',
     'concat',
     'jshint:afterconcat',
-    'sass'
+    'sass',
+    'watch'
   ]);
 
 };
