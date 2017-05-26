@@ -12,11 +12,18 @@ module.exports = function(grunt) {
         }
 
       }
+    },
+    concat: {
+      dist: {
+        src: ['src/js/**/*.js'],
+        dest: 'dist/js/app.js'
+      }
     }
   });
 
   grunt.registerTask('default', [
-    'sass'
+    'sass',
+    'concat'
   ]);
 
 };
