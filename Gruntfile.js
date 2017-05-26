@@ -1,45 +1,10 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   var config = grunt.file.readYAML('Gruntconfig.yml');
+  //123
 
-  grunt.initConfig({
-    sass: {
-      dist: {
-        options: {
-          sourcemap: 'none'
-        },
-        src: config.sassSrc+'style.scss',
-        dest: config.cssDest+'style.css'
-      }
-    },
-    concat: {
-      dist: {
-        src: [config.jsSrc+'/**/*.js'],
-        dest: config.jsDest+'/app.js'
-      }
-    },
-    jshint: {
-      all: ['Gruntfile.js'],
-      beforeconcat: config.jsSrc+'**/*.js',
-      afterconcat: config.jsDest+'**/*.js'
-    },
-    watch: {
-      scripts: {
-        files: [config.jsSrc+'**/*.js'],
-        tasks: ['jshint:all', 'jshint:beforeconcat', 'concat', 'jshint:afterconcat'],
-        options: {
-          spawn: false
-        }
-      },
-      sass: {
-        files: [config.sassSrc+'*.scss'],
-        tasks: ['sass'],
-        options: {
-          spawn: false
-        }
-      }
-    }
-  });
+  require('./grunt_tasks/sass.js')(grunt, config);
+  require('./grunt_tasks/javascript.js')(grunt, config);
 
   grunt.registerTask('default', [
     'jshint:all',
