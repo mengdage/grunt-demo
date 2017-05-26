@@ -7,6 +7,7 @@ Plugin used:
 3. grunt-contrib-jshint
 4. grunt-contrib-csslint
 5. grunt-contrib-watch
+6. grunt-contrib-concat
 
 Handle directories with a YAML file
 
