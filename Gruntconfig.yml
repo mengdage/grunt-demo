@@ -1,0 +1,4 @@
+sassSrc: src/sass/
+cssDest: dist/css/
+jsSrc: src/js/
+jsDest: dist/js/

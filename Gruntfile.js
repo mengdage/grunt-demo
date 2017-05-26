@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
+  var config = grunt.file.readYAML('Gruntconfig.yml');
 
   grunt.initConfig({
     sass: {
@@ -7,16 +8,14 @@ module.exports = function(grunt) {
         options: {
           sourcemap: 'none'
         },
-        files: {
-          'dist/css/style.css': 'src/sass/style.scss'
-        }
-
+        src: config.sassSrc+'style.scss',
+        dest: config.cssDest+'style.css'
       }
     },
     concat: {
       dist: {
-        src: ['src/js/**/*.js'],
-        dest: 'dist/js/app.js'
+        src: [config.jsSrc+'/**/*.js'],
+        dest: config.jsDest+'/app.js'
       }
     }
   });
