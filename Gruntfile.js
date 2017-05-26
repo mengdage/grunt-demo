@@ -17,12 +17,20 @@ module.exports = function(grunt) {
         src: [config.jsSrc+'/**/*.js'],
         dest: config.jsDest+'/app.js'
       }
+    },
+    jshint: {
+      all: ['Gruntfile.js'],
+      beforeconcat: config.jsSrc+'**/*.js',
+      afterconcat: config.jsDest+'**/*.js'
     }
   });
 
   grunt.registerTask('default', [
-    'sass',
-    'concat'
+    'jshint:all',
+    'jshint:beforeconcat',
+    'concat',
+    'jshint:afterconcat',
+    'sass'
   ]);
 
 };
